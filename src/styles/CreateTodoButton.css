@@ -1,0 +1,25 @@
+button {
+  font-size: 2rem;
+  color: #F6F7F8;
+
+  width: 40px;
+  height: 40px;
+
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  background: #20A4F3;
+
+  border: none;
+  border-radius: 50%;
+  box-shadow: #01162771 0.125em 0.125em 0.5em;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+button:hover {
+  background: #51B9F6;
+}
