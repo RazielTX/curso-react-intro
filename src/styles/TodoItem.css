@@ -41,6 +41,8 @@
 }
 
 .icon-delete {
+  color: var(--secondary-color-dark);
+
   font-size: 1.5rem;
   font-weight: 500;
 
@@ -52,7 +54,7 @@
 }
 
 .icon-delete:hover {
-  color: #ff4775;
+  color: var(--secondary-color);
   font-weight: bold;
 }
 
@@ -65,9 +67,9 @@
 }
 
 .icon-complete:hover {
-  color: #2ec4b6;
+  color: var(--primary-color);
 }
 
 .icon-complete--active {
-  color: #2ec4b6;
+  color: var(--primary-color);
 }

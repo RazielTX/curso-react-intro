@@ -9,7 +9,7 @@ button {
   bottom: 1rem;
   right: 1rem;
 
-  background: #20A4F3;
+  background: var(--primary-color);
 
   border: none;
   border-radius: 50%;
@@ -21,5 +21,5 @@ button {
 }
 
 button:hover {
-  background: #51B9F6;
+  background: var(--primary-color-dark);
 }

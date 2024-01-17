@@ -1,5 +1,6 @@
 input {
-  width: 30%;
+  width: 80%;
+  max-width: 300px;
   height: 2rem;
 
   background-color: #f6f7f8;

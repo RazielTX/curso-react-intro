@@ -6,6 +6,7 @@ import { TodoList } from "./components/TodoList";
 import { TodoItem } from "./components/TodoItem";
 import { CreateTodoButton } from "./components/CreateTodoButton";
 import "./App.css";
+import Chart from "./components/Chart";
 
 const defaultTodos = [
   { text: "Hacer los deberes de todos los dias", completed: true },
@@ -24,6 +25,7 @@ function App() {
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
+  const pendingTodos = totalTodos - completedTodos;
 
   const searchedTodos = todos.filter((todo) => {
     const todoText = todo.text.toLocaleLowerCase();
@@ -35,20 +37,30 @@ function App() {
 
   return (
     <>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      <div className="container">
+        <div className="container--section container-section--counter">
+          <TodoCounter completed={completedTodos} total={totalTodos} />
+          <Chart completedTodos={completedTodos} pendingTodos={pendingTodos} />
+        </div>
 
-      <TodoList>
-        {searchedTodos.map((todo) => (
-          <TodoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
+        <div className="container-section container-section--todo">
+          <TodoSearch
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
           />
-        ))}
-      </TodoList>
 
-      <CreateTodoButton />
+          <TodoList>
+            {searchedTodos.map((todo) => (
+              <TodoItem
+                key={todo.text}
+                text={todo.text}
+                completed={todo.completed}
+              />
+            ))}
+          </TodoList>
+        </div>
+        <CreateTodoButton />
+      </div>
     </>
   );
 }
