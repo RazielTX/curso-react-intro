@@ -54,11 +54,11 @@
   justify-content: center;
 }
 
-.container-section--counter {
+.container-section-counter {
   flex: 1;
 }
 
-.container-section--todo {
+.container-section-todo {
   flex: 2;
 }
 

@@ -33,17 +33,33 @@ function App() {
     return todoText.includes(searchText);
   });
 
-  console.log(searchValue);
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos[todoIndex].completed = newTodos[todoIndex].completed ? false : true;
+    setTodos(newTodos)
+  }
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    );
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos)
+  }
 
   return (
     <>
       <div className="container">
-        <div className="container--section container-section--counter">
+        <div className="container--section container-section-counter">
           <TodoCounter completed={completedTodos} total={totalTodos} />
           <Chart completedTodos={completedTodos} pendingTodos={pendingTodos} />
         </div>
 
-        <div className="container-section container-section--todo">
+        <div className="container-section container-section-todo">
           <TodoSearch
             searchValue={searchValue}
             setSearchValue={setSearchValue}
@@ -55,6 +71,8 @@ function App() {
                 key={todo.text}
                 text={todo.text}
                 completed={todo.completed}
+                onComplete={() => completeTodo(todo.text)}
+                onDelete={() => deleteTodo(todo.text)}
               />
             ))}
           </TodoList>
