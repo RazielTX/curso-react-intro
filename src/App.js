@@ -8,19 +8,33 @@ import { CreateTodoButton } from "./components/CreateTodoButton";
 import "./App.css";
 import Chart from "./components/Chart";
 
-const defaultTodos = [
-  { text: "Hacer los deberes de todos los dias", completed: true },
-  { text: "Los amigos", completed: false },
-  { text: "Leer", completed: true },
-  { text: "Vivir", completed: false },
-  { text: "Volver", completed: false },
-  { text: "Usar estados derivado", completed: true },
-];
+// const defaultTodos = [
+//   { text: "Hacer los deberes de todos los dias", completed: true },
+//   { text: "Los amigos", completed: false },
+//   { text: "Leer", completed: true },
+//   { text: "Vivir", completed: false },
+//   { text: "Volver", completed: false },
+//   { text: "Usar estados derivado", completed: true },
+// ];
 
-// Implementar https://www.chartjs.org/
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+// localStorage.removeItem('TODOS_V1');
+
+function useLocalStorage() {}
 
 function App() {
-  const [todos, setTodos] = React.useState(defaultTodos);
+  const localStorageTodos = localStorage.getItem("TODOS_V1");
+
+  let parsedTodos;
+
+  if (!localStorageTodos) {
+    localStorage.setItem("TODOS_V1", JSON.stringify([]));
+    parsedTodos = [];
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  const [todos, setTodos] = React.useState(parsedTodos);
   const [searchValue, setSearchValue] = React.useState("");
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
@@ -33,23 +47,26 @@ function App() {
     return todoText.includes(searchText);
   });
 
+  const saveTodos = (newTodos) => {
+    setTodos(newTodos);
+    localStorage.setItem("TODOS_V1", JSON.stringify(newTodos));
+  };
+
   const completeTodo = (text) => {
     const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
-    );
-    newTodos[todoIndex].completed = newTodos[todoIndex].completed ? false : true;
-    setTodos(newTodos)
-  }
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+    newTodos[todoIndex].completed = newTodos[todoIndex].completed
+      ? false
+      : true;
+    saveTodos(newTodos);
+  };
 
   const deleteTodo = (text) => {
     const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex(
-      (todo) => todo.text == text
-    );
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos)
-  }
+    saveTodos(newTodos);
+  };
 
   return (
     <>
