@@ -1,6 +1,6 @@
 import { MdDone, MdDelete } from "react-icons/md";
 
-import "../styles/TodoItem.css";
+import "./TodoItem.css";
 
 function TodoItem({ text, completed, onComplete, onDelete }) {
   return (
