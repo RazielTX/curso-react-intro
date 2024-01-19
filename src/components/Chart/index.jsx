@@ -1,5 +1,7 @@
 import { Chart as ChartJS } from "chart.js/auto";
+import React from "react";
 import { Doughnut } from "react-chartjs-2";
+import { TodoContext } from "../../TodoContext";
 
 // import ChartLoading from './ChartLoading'
 
@@ -20,7 +22,10 @@ const options = {
   },
 };
 
-function Chart({ completedTodos, pendingTodos, loading }) {
+function Chart() {
+  const { completedTodos, pendingTodos, loading } =
+    React.useContext(TodoContext);
+
   const data = {
     labels: ["Done", "Pending"],
     datasets: [

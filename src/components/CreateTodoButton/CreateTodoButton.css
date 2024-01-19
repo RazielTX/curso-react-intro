@@ -1,15 +1,16 @@
-button {
-  font-size: 2rem;
-  color: #F6F7F8;
+.createTodoButton {
 
-  width: 40px;
-  height: 40px;
+  padding: 0.5rem;
+
+  width: 30px;
+  height: 30px;
 
   position: absolute;
   bottom: 1rem;
   right: 1rem;
 
   background: var(--primary-color);
+  color: #F6F7F8;
 
   border: none;
   border-radius: 50%;
@@ -20,6 +21,6 @@ button {
   transition: 0.25s;
 }
 
-button:hover {
+.createTodoButton:hover {
   background: var(--primary-color-dark);
 }

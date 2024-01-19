@@ -1,3 +1,5 @@
+import React from "react";
+
 import { TodoCounter } from ".././components/TodoCounter";
 import { TodoSearch } from ".././components/TodoSearch";
 import { TodoList } from ".././components/TodoList";
@@ -8,25 +10,26 @@ import { TodosError } from ".././components/TodosError";
 import { EmptyTodos } from ".././components/EmptyTodos";
 import { CreateTodoButton } from ".././components/CreateTodoButton";
 import Chart from ".././components/Chart";
+import { TodoContext } from "../TodoContext";
+import { TodoModal } from "../components/TodoModal";
 
-function AppUI({
-  loading,
-  error,
-  completedTodos,
-  totalTodos,
-  pendingTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  completeTodo,
-  deleteTodo,
-}) {
+function AppUI() {
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+  } = React.useContext(TodoContext);
+
   return (
     <>
       <div className="container">
         <div className="container--section container-section-counter">
-          <TodoCounter completed={completedTodos} total={totalTodos} loading={loading} />
-          <Chart completedTodos={completedTodos} pendingTodos={pendingTodos} loading={loading} />
+          <TodoCounter />
+          <Chart />
         </div>
 
         <div className="container-section container-section-todo">
@@ -35,10 +38,7 @@ function AppUI({
               <TodoSearchLoading />
             </>
           ) : (
-            <TodoSearch
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-            />
+            <TodoSearch />
           )}
 
           <TodoList>
@@ -50,7 +50,7 @@ function AppUI({
               </>
             )}
             {error && <TodosError />}
-            {!loading && searchedTodos.length == 0 && <EmptyTodos />}
+            {!loading && searchedTodos.length === 0 && <EmptyTodos />}
 
             {searchedTodos.map((todo) => (
               <TodoItem
@@ -65,6 +65,8 @@ function AppUI({
         </div>
         <CreateTodoButton />
       </div>
+
+      {openModal && <TodoModal>Funcionalidad de agregar todo</TodoModal>}
     </>
   );
 }

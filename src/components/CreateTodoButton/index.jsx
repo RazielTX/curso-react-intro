@@ -1,17 +1,13 @@
+import { MdAdd } from "react-icons/md";
+
 import "./CreateTodoButton.css";
+import React from "react";
+import { TodoContext } from "../../TodoContext";
 
 function CreateTodoButton() {
-  return (
-    <button
-      className="CreateTodoButton"
-      onClick={(event) => {
-        console.log("Le diste click");
-        console.log(event.target);
-      }}
-    >
-      +
-    </button>
-  );
+  const { toggleModal } = React.useContext(TodoContext);
+
+  return <MdAdd className="createTodoButton" onClick={() => toggleModal()} />;
 }
 
 export { CreateTodoButton };
