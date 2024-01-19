@@ -1,0 +1,39 @@
+.todoLoading {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+
+  padding: 1rem 0;
+  margin: 1rem 0;
+
+  width: 100%;
+  max-width: 400px;
+  min-height: 40px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(119, 119, 119, 1) 0%,
+    rgba(205, 205, 205, 1) 100%
+  );
+  background-size: 300% 300%;
+  background-position: top;
+  transition: background-position 1s;
+  position: relative;
+
+  border-radius: 8px;
+  box-shadow: #01162771 0.25em 0.25em 0.5em;
+
+  animation: loading-animation 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-animation {
+  0% {
+    background-position: top;
+  }
+  50% {
+    background-position: bottom;
+  }
+  100% {
+    background-position: top;
+  }
+}
