@@ -12,6 +12,7 @@ import { CreateTodoButton } from ".././components/CreateTodoButton";
 import Chart from ".././components/Chart";
 import { TodoContext } from "../TodoContext";
 import { TodoModal } from "../components/TodoModal";
+import { TodoForm } from "../components/TodoForm";
 
 function AppUI() {
   const {
@@ -21,7 +22,6 @@ function AppUI() {
     completeTodo,
     deleteTodo,
     openModal,
-    setOpenModal,
   } = React.useContext(TodoContext);
 
   return (
@@ -66,7 +66,10 @@ function AppUI() {
         <CreateTodoButton />
       </div>
 
-      {openModal && <TodoModal>Funcionalidad de agregar todo</TodoModal>}
+      {openModal &&
+        <TodoModal>
+          <TodoForm />
+        </TodoModal>}
     </>
   );
 }
