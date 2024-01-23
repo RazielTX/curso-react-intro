@@ -4,9 +4,11 @@
   align-items: baseline;
 
   padding: 1rem 0;
-  width: 80%;
-  max-width: 300px;
-  margin: 12px 0;
+  margin: 1rem 0;
+
+  width: 100%;
+  max-width: 400px;
+  min-height: 40px;
 
   background-color: #f6f7f8;
   position: relative;
@@ -41,18 +43,20 @@
 }
 
 .icon-delete {
+  color: var(--secondary-color-dark);
+
   font-size: 1.5rem;
   font-weight: 500;
 
   position: absolute;
-  top: -32px;
+  top: -12px;
   right: 10px;
 
   cursor: pointer;
 }
 
 .icon-delete:hover {
-  color: #ff4775;
+  color: var(--secondary-color);
   font-weight: bold;
 }
 
@@ -65,9 +69,9 @@
 }
 
 .icon-complete:hover {
-  color: #2ec4b6;
+  color: var(--primary-color);
 }
 
 .icon-complete--active {
-  color: #2ec4b6;
+  color: var(--primary-color);
 }

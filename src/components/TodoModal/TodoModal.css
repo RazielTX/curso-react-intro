@@ -1,0 +1,19 @@
+.TodoModal {
+    padding: 1rem;
+
+    width: 50vw;
+    height: 50vh;
+
+    background-color: var(--dark-color);
+
+    position: absolute;
+    top: 25%;
+    left: 25%;
+
+    border-radius: 12px;
+    border: 1px var(--primary-color) solid;
+    box-shadow: var(--primary-color) 0.25em 0.25em 4px;
+
+    opacity: 0.99;
+
+}

@@ -1,0 +1,26 @@
+.createTodoButton {
+
+  padding: 0.5rem;
+
+  width: 30px;
+  height: 30px;
+
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  background: var(--primary-color);
+  color: #F6F7F8;
+
+  border: none;
+  border-radius: 50%;
+  box-shadow: #01162771 0.125em 0.125em 0.5em;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.createTodoButton:hover {
+  background: var(--primary-color-dark);
+}
